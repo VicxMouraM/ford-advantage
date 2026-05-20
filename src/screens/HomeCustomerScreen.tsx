@@ -1,164 +1,230 @@
 // src/screens/HomeCustomerScreen.tsx
-import { View, Text, TouchableOpacity, ScrollView, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
-import { useApp } from '../context/AppContext';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
+import { useApp } from "../context/AppContext";
 
 export default function HomeCustomerScreen() {
   const { navigate } = useApp();
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <LinearGradient
-        colors={['#001a4d', '#003078']}
-        style={styles.header}
-      >
-        <Text style={styles.greeting}>Bem-vindo ao</Text>
-        <Text style={styles.title}>FORD{'\n'}ADVANTAGE</Text>
+      <View style={styles.header}>
+        <View style={styles.headerTop}>
+          <View style={styles.headerLeft}>
+            <Text style={styles.greeting}>Bem-vindo ao</Text>
+            <Text style={styles.title}>FORD{"\n"}ADVANTAGE</Text>
+          </View>
+          <TouchableOpacity
+            style={styles.logoutButton}
+            onPress={() => navigate("login")}
+          >
+            <Text style={styles.logoutButtonText}>Sair</Text>
+          </TouchableOpacity>
+        </View>
         <Text style={styles.description}>
-          Compare a Ford Ranger Raptor com outros veículos e descubra qual combina melhor com seu estilo de uso.
+          Compare a Ford Ranger Raptor com outros veículos e descubra qual
+          combina melhor com seu estilo de uso.
         </Text>
-      </LinearGradient>
+      </View>
 
       <View style={styles.content}>
         <Text style={styles.sectionTitle}>O que deseja fazer?</Text>
 
         <TouchableOpacity
           style={[styles.btn, styles.btnPrimary]}
-          onPress={() => navigate('comparador')}
+          onPress={() => navigate("comparador")}
         >
           <Text style={styles.btnText}>⚡ Comparar Veículos</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[styles.btn, styles.btnSecondary]}
-          onPress={() => navigate('quiz')}
+          onPress={() => navigate("quiz")}
         >
           <Text style={styles.btnText}>🎯 Fazer Quiz de Perfil</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[styles.btn, styles.btnSecondary]}
-          onPress={() => navigate('historico')}
+          onPress={() => navigate("historico")}
         >
           <Text style={styles.btnText}>📋 Ver Histórico</Text>
         </TouchableOpacity>
 
-        <LinearGradient
-          colors={['#003078', '#001a50']}
-          style={styles.card}
-        >
-          <View style={styles.cardHeader}>
-            <Text style={styles.cardIcon}>🏆</Text>
-            <View>
-              <Text style={styles.cardTitle}>Ford Ranger Raptor</Text>
-              <Text style={styles.cardSubtitle}>V6 3.0L Biturbo • 397 cv • R$ 499.000</Text>
-            </View>
-          </View>
-          <Text style={styles.cardText}>
-            A picape de alta performance que redefine os limites. Motor V6 biturbo, suspensão FOX Racing e 7 modos de condução para qualquer terreno.
+        <View style={styles.highlightCard}>
+          <Text style={styles.highlightLabel}>Ford Ranger Raptor</Text>
+          <Text style={styles.highlightSub}>
+            V6 3.0L Biturbo • 397 cv • R$ 499.000
           </Text>
-        </LinearGradient>
+          <Text style={styles.highlightDescription}>
+            A picape de alta performance que redefine os limites. Motor V6
+            biturbo, suspensão FOX Racing e 7 modos de condução para qualquer
+            terreno.
+          </Text>
+          <View style={styles.tags}>
+            {[
+              "V6 Biturbo",
+              "397 cv",
+              "583 Nm",
+              "5,8s 0-100",
+              "FOX Racing",
+              "7 Modos",
+            ].map((tag) => (
+              <View key={tag} style={styles.tag}>
+                <Text style={styles.tagText}>{tag}</Text>
+              </View>
+            ))}
+          </View>
+        </View>
       </View>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#0d1929',
+  logoutButton: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 999,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.18)",
+    marginLeft: 16,
   },
+  logoutButtonText: {
+    color: "white",
+    fontSize: 12,
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: 1,
+  },
+  container: { flex: 1, backgroundColor: "#0d1929" },
   header: {
+    backgroundColor: "#003078",
     paddingHorizontal: 20,
     paddingTop: 60,
     paddingBottom: 30,
   },
+  headerTop: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: 20,
+  },
+  headerLeft: {
+    flex: 1,
+  },
+  backButton: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 999,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.18)",
+    marginLeft: 16,
+  },
+  backButtonText: {
+    color: "white",
+    fontSize: 12,
+    fontWeight: "bold",
+    textTransform: "uppercase",
+    letterSpacing: 1,
+  },
   greeting: {
     fontSize: 11,
-    color: '#00a3e0',
+    color: "#00a3e0",
     letterSpacing: 3,
-    textTransform: 'uppercase',
-    marginBottom: 6,
+    textTransform: "uppercase",
   },
   title: {
     fontSize: 34,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
     letterSpacing: 3,
-    lineHeight: 38,
+    marginTop: 6,
   },
   description: {
     fontSize: 12,
-    color: 'rgba(255,255,255,0.6)',
+    color: "rgba(255,255,255,0.6)",
     marginTop: 12,
     lineHeight: 18,
   },
-  content: {
-    padding: 20,
-  },
+  content: { padding: 20 },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
     marginBottom: 16,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   btn: {
     paddingVertical: 16,
     borderRadius: 14,
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 12,
   },
   btnPrimary: {
-    backgroundColor: '#00a3e0',
-    shadowColor: '#00a3e0',
+    backgroundColor: "#00a3e0",
+    shadowColor: "#00a3e0",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 5,
   },
   btnSecondary: {
-    backgroundColor: 'rgba(255,255,255,0.06)',
+    backgroundColor: "rgba(255,255,255,0.06)",
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.12)',
+    borderColor: "rgba(255,255,255,0.12)",
   },
   btnText: {
-    color: 'white',
+    color: "white",
     fontSize: 15,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     letterSpacing: 1,
   },
-  card: {
-    borderRadius: 16,
-    padding: 18,
-    marginTop: 20,
+  highlightCard: {
+    backgroundColor: "rgba(245,166,35,0.05)",
     borderWidth: 1,
-    borderColor: 'rgba(0,163,224,0.3)',
+    borderColor: "rgba(245,166,35,0.3)",
+    borderRadius: 16,
+    padding: 16,
+    marginTop: 20,
   },
-  cardHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
+  highlightLabel: {
+    fontSize: 10,
+    color: "#f5a623",
+    textTransform: "uppercase",
+    letterSpacing: 2,
+    marginBottom: 8,
+  },
+  highlightSub: {
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "white",
+    marginBottom: 8,
+  },
+  highlightDescription: {
+    fontSize: 12,
+    color: "rgba(255,255,255,0.6)",
+    lineHeight: 18,
     marginBottom: 12,
   },
-  cardIcon: {
-    fontSize: 32,
+  tags: { flexDirection: "row", flexWrap: "wrap", gap: 6 },
+  tag: {
+    backgroundColor: "rgba(0,163,224,0.15)",
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 6,
   },
-  cardTitle: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  cardSubtitle: {
+  tagText: {
     fontSize: 10,
-    color: '#00a3e0',
-    textTransform: 'uppercase',
-    letterSpacing: 1,
-    marginTop: 2,
-  },
-  cardText: {
-    fontSize: 12,
-    color: 'rgba(255,255,255,0.6)',
-    lineHeight: 18,
+    fontWeight: "bold",
+    color: "#00a3e0",
+    textTransform: "uppercase",
   },
 });

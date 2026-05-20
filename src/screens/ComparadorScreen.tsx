@@ -1,5 +1,5 @@
 // src/screens/ComparadorScreen.tsx
-import { useState } from 'react';
+import { useState } from "react";
 import {
   View,
   Text,
@@ -7,37 +7,56 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   StyleSheet,
-} from 'react-native';
-import { Picker } from '@react-native-picker/picker';
-import { useApp } from '../context/AppContext';
-import { COMPETITORS, ATTRIBUTES } from '../data/constants';
+} from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import { useApp } from "../context/AppContext";
+import { COMPETITORS, ATTRIBUTES } from "../data/constants";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function ComparadorScreen() {
-  const { setComparisonState, setComparisonResult, navigate, addHistory } = useApp();
-  const [competitor, setCompetitor] = useState('hilux');
-  const [selectedAttrs, setSelectedAttrs] = useState(['power', 'torque', 'acceleration', 'transmission', 'suspension', 'price']);
+  const {
+    setComparisonState,
+    setComparisonResult,
+    navigate,
+    addHistory,
+    user,
+  } = useApp();
+
+  const backScreen = user?.type === "ford" ? "home-ford" : "home-customer";
+  const [competitor, setCompetitor] = useState("hilux");
+  const [selectedAttrs, setSelectedAttrs] = useState([
+    "power",
+    "torque",
+    "acceleration",
+    "transmission",
+    "suspension",
+    "price",
+  ]);
   const [loading, setLoading] = useState(false);
 
   const toggleAttr = (id: string) => {
-    setSelectedAttrs(prev =>
-      prev.includes(id) ? prev.filter(a => a !== id) : [...prev, id]
+    setSelectedAttrs((prev) =>
+      prev.includes(id) ? prev.filter((a) => a !== id) : [...prev, id],
     );
   };
 
   const compare = async () => {
     setLoading(true);
-    await new Promise(r => setTimeout(r, 1200));
-    const result = { competitor: COMPETITORS[competitor as keyof typeof COMPETITORS], attributes: selectedAttrs };
+    await new Promise((r) => setTimeout(r, 1200));
+    const result = {
+      competitor: COMPETITORS[competitor as keyof typeof COMPETITORS],
+      attributes: selectedAttrs,
+    };
     setComparisonState(result);
     setComparisonResult(result);
     addHistory({
-      type: 'Comparação',
-      icon: '⚡',
+      type: "Comparação",
+      icon: "⚡",
       main: `Ranger Raptor vs ${COMPETITORS[competitor as keyof typeof COMPETITORS].model}`,
       meta: `${selectedAttrs.length} atributos comparados`,
     });
     setLoading(false);
-    navigate('resultado');
+    navigate("resultado");
   };
 
   if (loading) {
@@ -52,20 +71,35 @@ export default function ComparadorScreen() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigate('home-customer')} style={styles.backButton}>
-          <Text style={styles.backText}>‹</Text>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigate(backScreen)}
+        >
+          <Text style={styles.backButtonText}>←</Text>
         </TouchableOpacity>
+
         <Text style={styles.headerTitle}>Comparador Inteligente</Text>
+
+        <View style={styles.badge}>
+          <Text style={styles.badgeText}>
+            {user?.type === "ford" ? "FORD" : "CLIENTE"}
+          </Text>
+        </View>
       </View>
 
       <View style={styles.content}>
-        <LinearGradient colors={['#003078', '#001a50']} style={styles.referenceCard}>
+        <LinearGradient
+          colors={["#003078", "#001a50"]}
+          style={styles.referenceCard}
+        >
           <View style={styles.referenceContent}>
             <Text style={styles.referenceIcon}>🏆</Text>
             <View>
               <Text style={styles.referenceLabel}>Referência</Text>
               <Text style={styles.referenceTitle}>Ford Ranger Raptor</Text>
-              <Text style={styles.referenceSpecs}>V6 3.0L Biturbo • 397 cv</Text>
+              <Text style={styles.referenceSpecs}>
+                V6 3.0L Biturbo • 397 cv
+              </Text>
             </View>
           </View>
         </LinearGradient>
@@ -79,8 +113,12 @@ export default function ComparadorScreen() {
               style={styles.picker}
               dropdownIconColor="#00a3e0"
             >
-              {Object.values(COMPETITORS).map(c => (
-                <Picker.Item key={c.id} label={`${c.brand} ${c.model} ${c.version}`} value={c.id} />
+              {Object.values(COMPETITORS).map((c) => (
+                <Picker.Item
+                  key={c.id}
+                  label={`${c.brand} ${c.model} ${c.version}`}
+                  value={c.id}
+                />
               ))}
             </Picker>
           </View>
@@ -91,7 +129,7 @@ export default function ComparadorScreen() {
             Atributos para Comparar ({selectedAttrs.length}/{ATTRIBUTES.length})
           </Text>
           <View style={styles.attrGrid}>
-            {ATTRIBUTES.map(attr => (
+            {ATTRIBUTES.map((attr) => (
               <TouchableOpacity
                 key={attr.id}
                 style={[
@@ -100,10 +138,13 @@ export default function ComparadorScreen() {
                 ]}
                 onPress={() => toggleAttr(attr.id)}
               >
-                <Text style={[
-                  styles.attrChipText,
-                  selectedAttrs.includes(attr.id) && styles.attrChipTextActive,
-                ]}>
+                <Text
+                  style={[
+                    styles.attrChipText,
+                    selectedAttrs.includes(attr.id) &&
+                      styles.attrChipTextActive,
+                  ]}
+                >
                   {attr.label}
                 </Text>
               </TouchableOpacity>
@@ -112,7 +153,10 @@ export default function ComparadorScreen() {
         </View>
 
         <TouchableOpacity
-          style={[styles.compareBtn, selectedAttrs.length === 0 && styles.compareBtnDisabled]}
+          style={[
+            styles.compareBtn,
+            selectedAttrs.length === 0 && styles.compareBtnDisabled,
+          ]}
           onPress={compare}
           disabled={selectedAttrs.length === 0}
         >
@@ -123,42 +167,61 @@ export default function ComparadorScreen() {
   );
 }
 
-import { LinearGradient } from 'expo-linear-gradient';
-
 const styles = StyleSheet.create({
+  backButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: "rgba(255,255,255,0.08)",
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.15)",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 2,
+  },
+  badge: {
+    backgroundColor: "#00a3e0",
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 12,
+    zIndex: 2,
+  },
+  badgeText: {
+    fontSize: 10,
+    fontWeight: "bold",
+    color: "white",
+    textTransform: "uppercase",
+  },
+  backButtonText: {
+    color: "white",
+    fontSize: 22,
+    fontWeight: "bold",
+  },
   container: {
     flex: 1,
-    backgroundColor: '#0d1929',
+    backgroundColor: "#0d1929",
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: 20,
     paddingTop: 60,
     paddingBottom: 16,
-    backgroundColor: 'rgba(0,48,120,0.95)',
+    backgroundColor: "rgba(0,48,120,0.95)",
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0,163,224,0.2)',
-  },
-  backButton: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: 'rgba(255,255,255,0.08)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 12,
-  },
-  backText: {
-    fontSize: 20,
-    color: 'white',
+    borderBottomColor: "rgba(0,163,224,0.2)",
   },
   headerTitle: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 62,
+    textAlign: "center",
     fontSize: 18,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
     letterSpacing: 1,
-    flex: 1,
   },
   content: {
     padding: 20,
@@ -168,11 +231,11 @@ const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 20,
     borderWidth: 1,
-    borderColor: 'rgba(0,163,224,0.3)',
+    borderColor: "rgba(0,163,224,0.3)",
   },
   referenceContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     gap: 12,
   },
   referenceIcon: {
@@ -180,43 +243,43 @@ const styles = StyleSheet.create({
   },
   referenceLabel: {
     fontSize: 9,
-    color: '#00a3e0',
-    textTransform: 'uppercase',
+    color: "#00a3e0",
+    textTransform: "uppercase",
     letterSpacing: 2,
   },
   referenceTitle: {
     fontSize: 14,
-    fontWeight: 'bold',
-    color: 'white',
+    fontWeight: "bold",
+    color: "white",
   },
   referenceSpecs: {
     fontSize: 10,
-    color: 'rgba(255,255,255,0.5)',
+    color: "rgba(255,255,255,0.5)",
   },
   section: {
     marginBottom: 20,
   },
   label: {
     fontSize: 10,
-    color: '#00a3e0',
-    textTransform: 'uppercase',
+    color: "#00a3e0",
+    textTransform: "uppercase",
     letterSpacing: 2,
     marginBottom: 8,
   },
   pickerContainer: {
-    backgroundColor: 'rgba(255,255,255,0.04)',
+    backgroundColor: "rgba(255,255,255,0.04)",
     borderWidth: 1,
-    borderColor: 'rgba(0,163,224,0.2)',
+    borderColor: "rgba(0,163,224,0.2)",
     borderRadius: 12,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   picker: {
-    color: 'white',
+    color: "white",
     height: 50,
   },
   attrGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexDirection: "row",
+    flexWrap: "wrap",
     gap: 8,
   },
   attrChip: {
@@ -224,28 +287,28 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 20,
     borderWidth: 1,
-    borderColor: 'rgba(0,163,224,0.2)',
-    backgroundColor: 'rgba(255,255,255,0.04)',
+    borderColor: "rgba(0,163,224,0.2)",
+    backgroundColor: "rgba(255,255,255,0.04)",
   },
   attrChipActive: {
-    backgroundColor: '#00a3e0',
-    borderColor: 'transparent',
+    backgroundColor: "#00a3e0",
+    borderColor: "transparent",
   },
   attrChipText: {
     fontSize: 11,
-    fontWeight: '600',
-    color: 'rgba(255,255,255,0.6)',
+    fontWeight: "600",
+    color: "rgba(255,255,255,0.6)",
   },
   attrChipTextActive: {
-    color: 'white',
+    color: "white",
   },
   compareBtn: {
-    backgroundColor: '#00a3e0',
+    backgroundColor: "#00a3e0",
     paddingVertical: 16,
     borderRadius: 14,
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 12,
-    shadowColor: '#00a3e0',
+    shadowColor: "#00a3e0",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
@@ -255,22 +318,22 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
   compareBtnText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     letterSpacing: 1,
   },
   loadingContainer: {
     flex: 1,
-    backgroundColor: '#0d1929',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#0d1929",
+    alignItems: "center",
+    justifyContent: "center",
     gap: 16,
   },
   loadingText: {
     fontSize: 12,
-    color: 'rgba(255,255,255,0.5)',
+    color: "rgba(255,255,255,0.5)",
     letterSpacing: 2,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
 });
