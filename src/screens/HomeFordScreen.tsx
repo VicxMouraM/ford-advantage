@@ -47,6 +47,12 @@ export default function HomeFordScreen() {
       sub: "Suas comparações",
       screen: "historico",
     },
+    {
+      icon: "🔍",
+      title: "Busca Livre",
+      sub: "Pesquise qualquer veículo",
+      screen: "free-search",
+    }
   ];
 
   return (

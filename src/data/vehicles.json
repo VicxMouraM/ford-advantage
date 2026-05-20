@@ -1,0 +1,308 @@
+{
+  "vehicles": {
+    "Ranger Raptor": {
+      "name": "Ranger Raptor",
+      "brand": "Ford",
+      "model": "Ranger",
+      "version": "Raptor",
+      "specs": {
+        "Cilindrada": 3,
+        "Potência": 397,
+        "Torque": 583,
+        "Economia de Combustível": "não disponível",
+        "Transmissão Automática": "X",
+        "Tecnologia turbo": "X",
+        "Quantidade de marchas": 10,
+        "Motor Diesel": 0,
+        "Motor Flex vs Gasolina": "Gasolina"
+      },
+      "wheels": {
+        "Liga leve": "X",
+        "Polegadas": 17,
+        "Pneus ATR (50/50)": "X"
+      },
+      "iceLineUp": {
+        "Bluetooth": "X",
+        "Muitimedia polegadas": 12,
+        "Carregamento Wireless": "X",
+        "Câmera 360 graus": "X",
+        "Conexão Wireless Android Auto & Car Play": "X"
+      },
+      "airConditioning": {
+        "Ar Condicionado Automático e Digital": "X",
+        "Ar condicionado de duas zonas": "X"
+      },
+      "safety": {
+        "Airbag (cada)": 8,
+        "Controle de descida": "X",
+        "Freio automatico após impacto": "X"
+      },
+      "highTech": {
+        "Sensor de Estacionamento Traseiro": "X",
+        "Sensor de Estacionamento Dianteiro": "X",
+        "Sensor de Chuva": "X",
+        "Freio de mão eletrônico": "X",
+        "AEB (Autonomous Emergency Brake)": "X",
+        "Alerta de Colisão Frontal": "X"
+      },
+      "lights": {
+        "Faróis Full LED": "X",
+        "Farois Matrix Led": "X",
+        "Farol alto automático": "X"
+      },
+      "fourXFour": {
+        "Tração integral (AWD)": "X",
+        "Tração 4x4 (high/low)": "X",
+        "Diferencial traseiro blocante": "X",
+        "Suspensão Off road FOX Live Valve Eixo Frontal/Traseiro": "X",
+        "Terrain Management System": "X"
+      },
+      "others": {
+        "Anos de garantia": 5,
+        "Cabine Dupla (pickups)": "X",
+        "Engate de Reboque 3.500 kg": "X",
+        "Monitor de vida util do óleo": "X"
+      }
+    },
+    "XLT 3.0L V6 AT 26MY": {
+      "name": "XLT 3.0L V6 AT 26MY",
+      "brand": "Ford",
+      "model": "Ranger",
+      "version": "XLT 3.0L V6 AT 26MY",
+      "specs": {
+        "Peso em ordem de marchas": 2283,
+        "Cilindrada": 3,
+        "Potência": 250,
+        "Torque": 600,
+        "Economia de Combustível": 9.55,
+        "Transmissão Automática": "X",
+        "Motor Flex vs Gasolina": 0,
+        "Tecnologia turbo": "X",
+        "Quantidade de marchas": 10,
+        "FHEV": 0,
+        "PHEV": 0,
+        "BEV": 0,
+        "Motor Diesel": "X",
+        "Paddle Shift": 0,
+        "E-Shifter (Manopla eletrônica)": "X",
+        "Tecnologia BiTurbo": 0,
+        "Motor Elétrico": 0,
+        "E-Autonomy": 0
+      },
+      "wheels": {
+        "Liga leve": "X",
+        "Polegadas": 17,
+        "Pneus ATR (50/50)": "X",
+        "Pneus RunFlat": 0,
+        "Pneus ATR Plus (60/40)": 0,
+        "Pneus Auto-vedantes": 0,
+        "Full Size Spare tires (same as vehicle base)": "X",
+        "Estepe temporário": 0
+      },
+      "iceLineUp": {
+        "Bluetooth": "X",
+        "Camera traseira": "X",
+        "Camera 180 graus": 0,
+        "Navegador GPS": 0,
+        "Reconhecimento por voz e/ou Comando de Voz": 0,
+        "Alto-falantes/ Tweeters (unidade)": 6,
+        "Muitimedia polegadas": 10,
+        "Assistência de Emergência": "X",
+        "Carregamento Wireless": "X",
+        "Câmera 360 graus": 0,
+        "Conexão Wireless Android Auto & Car Play": "X",
+        "Tela no painel de instrumentos colorida por polegada": 8,
+        "USB (unidade)": 4
+      },
+      "airConditioning": {
+        "Ar Condicionado com saída p/ 2ª fileira ou mais de bancos": "X",
+        "Ar Condicionado Automático e Digital": 0,
+        "Ar condicionado de duas zonas": 0
+      },
+      "safety": {
+        "Sistema Anti Capotamento (Rollover Stability Control)": "X",
+        "Freio Automático (Carro Parado)": 0,
+        "Sensor de Pressão dos pneus (TPMS)": 0,
+        "Controle de descida": "X",
+        "Controle Adaptativo de carga": "X",
+        "Controle de reboque": "X",
+        "Freio automatico após impacto": "X",
+        "Assistência de direção defensiva": 0,
+        "Airbag (cada)": 7
+      },
+      "highTech": {
+        "Piloto Automático": "X",
+        "Limitador de Velocidade": "X",
+        "Piloto Automático Adaptativo": 0,
+        "Sistema de Permanência na Faixa (alerta e assistência)": "X",
+        "Sensor de Estacionamento Traseiro": "X",
+        "Sensor de Estacionamento Dianteiro": "X",
+        "Sensor de Chuva": "X",
+        "Espelho retrovisor eletrocrômico": "X",
+        "Acendimento automático dos faróis (sensor crepuscular)": "X",
+        "Freio de mão eletrônico": "X",
+        "Retrovisor elétrico": "X",
+        "Reconhecimento de sinais de trânsito": "X",
+        "AEB (Autonomous Emergency Brake)": "X",
+        "Espelho retrovisor com rebatimento elétrico": "X",
+        "Alerta de Colisão Frontal": "X",
+        "Sistema Keyless Entry com Botão de Partida (PEPS)": 0
+      },
+      "lights": {
+        "Faróis Full LED": "X",
+        "LED Day time running lights (DTRL) + Signature Lights": "X",
+        "Farol alto automático": "X",
+        "Lanternas em LED - parcial": 0,
+        "Seta no retrovisor": "X",
+        "Lâmpada Farol de Neblina LED": "X",
+        "Ajuste de Altura de faróis": "X",
+        "Iluminação na caçamba (interno) + Chicote Elétrico": "X"
+      },
+      "fourXFour": {
+        "Diferencial traseiro blocante": "X",
+        "Estribo Lateral Plataforma (Pickups)": "X",
+        "Terrain Management System": "X",
+        "Tração integral (AWD)": "X"
+      },
+      "others": {
+        "Anos de garantia": 5,
+        "Apoio de braço traseiro": 0,
+        "Cabine Dupla (pickups)": "X",
+        "Degrau acesso caçamba": "X",
+        "Assistente da Tampa da Caçamba": "X",
+        "Travamento elétrico da caçamba": "X",
+        "Engate de Reboque 3.500 kg": "X",
+        "Monitor de vida util do óleo": "X",
+        "Bagageiro de teto (barras longitudinais)": 0,
+        "Bússola e inclinômetros longitudinal e transversal": "X",
+        "Console dianteiro central com apoio de braço": "X",
+        "Disco de freio traseiro": "X",
+        "Espelho Retrovisor Externo Cromado": 0,
+        "Ganchos para Reboque (cada)": 1,
+        "Grade do radiador com acabamento Premium": "X",
+        "Maçanetas externas cromadas": 0,
+        "Para Barro (Par)": 2,
+        "Para-choque na Cor do Veículo": "X",
+        "Protetor de cárter": "X",
+        "Protetor inferior do tanque de combustível": "X",
+        "Tapete de Borracha": "X",
+        "Iluminação Ambiente One Color (Ambient Light)": 0,
+        "Preparação para reboque (Chicote)": "X",
+        "Tomada 12V (cada)": "X"
+      }
+    },
+    "Limited 3.0L V6 26MY": {
+      "name": "Limited 3.0L V6 26MY",
+      "brand": "Ford",
+      "model": "Ranger",
+      "version": "Limited 3.0L V6 26MY",
+      "specs": {
+        "Peso em ordem de marchas": 2357,
+        "Cilindrada": 3,
+        "Potência": 250,
+        "Torque": 600,
+        "Economia de Combustível": 9.55,
+        "Transmissão Automática": "X",
+        "Tecnologia turbo": "X",
+        "Quantidade de marchas": 10,
+        "Motor Diesel": "X",
+        "E-Shifter (Manopla eletrônica)": "X"
+      },
+      "wheels": {
+        "Liga leve": "X",
+        "Polegadas": 18,
+        "Pneus ATR (50/50)": "X",
+        "Full Size Spare tires": "X"
+      },
+      "iceLineUp": {
+        "Bluetooth": "X",
+        "Camera traseira": "X",
+        "Reconhecimento por voz e/ou Comando de Voz": "X",
+        "Alto-falantes/ Tweeters (unidade)": 6,
+        "Muitimedia polegadas": 12,
+        "Carregamento Wireless": "X",
+        "Conexão Wireless": "X",
+        "Tela no painel de instrumentos colorida por polegada": 8,
+        "USB (unidade)": 4
+      },
+      "airConditioning": {
+        "Ar Condicionado com saída p/ 2ª fileira": "X",
+        "Ar Condicionado Automático e Digital": "X",
+        "Ar condicionado de duas zonas": "X"
+      },
+      "safety": {
+        "Sensor de Pressão dos pneus (TPMS)": "X",
+        "Controle de descida": "X",
+        "Airbag (cada)": 7
+      },
+      "highTech": {
+        "Piloto Automático": "X",
+        "Sistema de Permanência na Faixa": "X",
+        "Sensor de Estacionamento Traseiro": "X",
+        "Sensor de Chuva": "X",
+        "Freio de mão eletrônico": "X",
+        "Sistema Keyless Entry": "X"
+      },
+      "lights": {
+        "Faróis Full LED": "X",
+        "Lanternas em LED - parcial": "X"
+      },
+      "fourXFour": {
+        "Santo Antônio (estilizado c/ box rail)": "X",
+        "Protetor de Caçamba": "X",
+        "Box rails": "X"
+      },
+      "others": {
+        "Anos de garantia": 5,
+        "Apoio de braço traseiro": "X",
+        "Bagageiro de teto": "X",
+        "Espelho Retrovisor Externo Cromado": "X",
+        "Ganchos para Reboque": 2,
+        "Maçanetas externas cromadas": "X",
+        "Iluminação Ambiente": "X"
+      }
+    },
+    "Limited + 3.0L V6 26MY": {
+      "name": "Limited + 3.0L V6 26MY",
+      "brand": "Ford",
+      "model": "Ranger",
+      "version": "Limited + 3.0L V6 26MY",
+      "specs": {
+        "Cilindrada": 3,
+        "Potência": 250,
+        "Torque": 600,
+        "Transmissão Automática": "X",
+        "Quantidade de marchas": 10,
+        "Motor Diesel": "X"
+      },
+      "wheels": {
+        "Polegadas": 20
+      },
+      "iceLineUp": {
+        "Câmera 360 graus": "X",
+        "Tela no painel de instrumentos colorida por polegada": 12.4
+      },
+      "airConditioning": {
+        "Ar Condicionado Automático e Digital": "X"
+      },
+      "safety": {
+        "Assistência de direção defensiva": "X"
+      },
+      "highTech": {
+        "Sistema de centralização de faixa": "X",
+        "Piloto Automático Adaptativo + Stop & GO": "X",
+        "BLIS + Alerta de trafego cruzado": "X",
+        "Reverse AEB": "X",
+        "Sistema Keyless Entry": "X"
+      },
+      "others": {
+        "Anos de garantia": 5,
+        "Apoio de braço traseiro": "X",
+        "Bagageiro de teto": "X"
+      }
+      
+    }
+    
+  }
+  
+}
