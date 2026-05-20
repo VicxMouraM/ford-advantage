@@ -1,9 +1,7 @@
-// src/navigation/index.tsx
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useApp } from '../context/AppContext';
 
-// Screens
 import SplashScreen from '../screens/SplashScreen';
 import LoginScreen from '../screens/LoginScreen';
 import HomeCustomerScreen from '../screens/HomeCustomerScreen';
@@ -23,7 +21,6 @@ const Stack = createNativeStackNavigator();
 export default function RootNavigator() {
   const { screen } = useApp();
 
-  // Map screen names to components
   const screenMap: Record<string, React.ComponentType<any>> = {
     splash: SplashScreen,
     login: LoginScreen,

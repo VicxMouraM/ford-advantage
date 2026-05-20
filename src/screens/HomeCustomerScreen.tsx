@@ -1,4 +1,3 @@
-// src/screens/HomeCustomerScreen.tsx
 import {
   View,
   Text,

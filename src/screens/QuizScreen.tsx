@@ -1,4 +1,3 @@
-// src/screens/QuizScreen.tsx
 import { useState } from "react";
 import {
   View,

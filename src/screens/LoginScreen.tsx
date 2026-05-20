@@ -1,4 +1,3 @@
-// src/screens/LoginScreen.tsx
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useApp } from '../context/AppContext';

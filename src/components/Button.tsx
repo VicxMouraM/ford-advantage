@@ -1,55 +1,78 @@
-// src/components/Button.tsx
-import { TouchableOpacity, Text, StyleSheet, ActivityIndicator, ViewStyle } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import {
+  TouchableOpacity,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  ViewStyle,
+  ColorValue,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  variant?: 'primary' | 'secondary' | 'ford' | 'customer' | 'danger' | 'success';
-  size?: 'small' | 'medium' | 'large';
+  variant?:
+    | "primary"
+    | "secondary"
+    | "ford"
+    | "customer"
+    | "danger"
+    | "success";
+  size?: "small" | "medium" | "large";
   loading?: boolean;
   disabled?: boolean;
   icon?: string;
   style?: ViewStyle;
 }
 
-export default function Button({ 
-  title, 
-  onPress, 
-  variant = 'primary', 
-  size = 'medium', 
-  loading = false, 
+export default function Button({
+  title,
+  onPress,
+  variant = "primary",
+  size = "medium",
+  loading = false,
   disabled = false,
   icon,
-  style 
+  style,
 }: ButtonProps) {
-  const getGradient = () => {
+  const getGradient = (): [ColorValue, ColorValue] => {
     switch (variant) {
-      case 'ford': return ['#003078', '#0056b3'];
-      case 'customer': return ['#00a3e0', '#1e90ff'];
-      case 'danger': return ['#c62828', '#e53935'];
-      case 'success': return ['#1b5e20', '#2e7d32'];
-      default: return ['#0056b3', '#00a3e0'];
+      case "ford":
+        return ["#003078", "#0056b3"];
+      case "customer":
+        return ["#00a3e0", "#1e90ff"];
+      case "danger":
+        return ["#c62828", "#e53935"];
+      case "success":
+        return ["#1b5e20", "#2e7d32"];
+      default:
+        return ["#0056b3", "#00a3e0"];
     }
   };
 
   const getSizeStyle = () => {
     switch (size) {
-      case 'small': return { paddingVertical: 10, paddingHorizontal: 16 };
-      case 'large': return { paddingVertical: 18, paddingHorizontal: 24 };
-      default: return { paddingVertical: 14, paddingHorizontal: 20 };
+      case "small":
+        return { paddingVertical: 10, paddingHorizontal: 16 };
+      case "large":
+        return { paddingVertical: 18, paddingHorizontal: 24 };
+      default:
+        return { paddingVertical: 14, paddingHorizontal: 20 };
     }
   };
 
   const getTextSize = () => {
     switch (size) {
-      case 'small': return 13;
-      case 'large': return 17;
-      default: return 15;
+      case "small":
+        return 13;
+      case "large":
+        return 17;
+      default:
+        return 15;
     }
   };
 
-  if (variant === 'secondary') {
+  if (variant === "secondary") {
     return (
       <TouchableOpacity
         style={[
@@ -65,7 +88,8 @@ export default function Button({
           <ActivityIndicator size="small" color="white" />
         ) : (
           <Text style={[styles.secondaryText, { fontSize: getTextSize() }]}>
-            {icon && `${icon} `}{title}
+            {icon && `${icon} `}
+            {title}
           </Text>
         )}
       </TouchableOpacity>
@@ -88,7 +112,8 @@ export default function Button({
           <ActivityIndicator size="small" color="white" />
         ) : (
           <Text style={[styles.text, { fontSize: getTextSize() }]}>
-            {icon && `${icon} `}{title}
+            {icon && `${icon} `}
+            {title}
           </Text>
         )}
       </LinearGradient>
@@ -99,33 +124,33 @@ export default function Button({
 const styles = StyleSheet.create({
   buttonContainer: {
     borderRadius: 14,
-    overflow: 'hidden',
-    shadowColor: '#000',
+    overflow: "hidden",
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,
     elevation: 5,
   },
   gradient: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
     letterSpacing: 1,
   },
   secondaryButton: {
-    backgroundColor: 'rgba(255,255,255,0.06)',
+    backgroundColor: "rgba(255,255,255,0.06)",
     borderWidth: 1,
-    borderColor: 'rgba(255,255,255,0.12)',
+    borderColor: "rgba(255,255,255,0.12)",
     borderRadius: 14,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   secondaryText: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
     letterSpacing: 1,
   },
   disabled: {

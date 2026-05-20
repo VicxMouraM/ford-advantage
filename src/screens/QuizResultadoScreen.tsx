@@ -1,4 +1,3 @@
-// src/screens/QuizResultadoScreen.tsx
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useApp } from '../context/AppContext';
@@ -47,10 +46,6 @@ export default function QuizResultadoScreen() {
           <Text style={styles.closingLabel}>🏆 Por que a Ranger Raptor combina</Text>
           <Text style={styles.closingText}>{quizResult.argument}</Text>
         </LinearGradient>
-
-        <TouchableOpacity style={styles.actionBtn} onPress={() => navigate('comparador')}>
-          <Text style={styles.actionBtnText}>⚡ Comparar Veículos Agora</Text>
-        </TouchableOpacity>
       </View>
     </ScrollView>
   );

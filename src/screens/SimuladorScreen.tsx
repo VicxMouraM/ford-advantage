@@ -1,4 +1,3 @@
-// src/screens/SimuladorScreen.tsx
 import { useState } from "react";
 import {
   View,
@@ -7,9 +6,10 @@ import {
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator,
+  Modal,
+  Pressable,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Picker } from "@react-native-picker/picker";
 import FordExclusiveGate from "../components/FordExclusiveGate";
 import { SALE_SCENARIOS } from "../data/constants";
 import { useApp } from "../context/AppContext";
@@ -25,6 +25,11 @@ export default function SimuladorScreen() {
   });
   const [result, setResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const [activeSelect, setActiveSelect] = useState<null | {
+    key: string;
+    label: string;
+    opts: string[];
+  }>(null);
 
   const setField = (key: string, value: string) =>
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -116,24 +121,32 @@ export default function SimuladorScreen() {
                   label: "Cenário de Venda",
                   opts: SALE_SCENARIOS.scenarios,
                 },
-              ].map(({ key, label, opts }) => (
-                <View key={key} style={styles.inputGroup}>
-                  <Text style={styles.label}>{label}</Text>
-                  <View style={styles.pickerContainer}>
-                    <Picker
-                      selectedValue={(form as any)[key]}
-                      onValueChange={(v) => setField(key, v)}
-                      style={styles.picker}
-                      dropdownIconColor="#00a3e0"
+              ].map(({ key, label, opts }) => {
+                const selectedValue = (form as any)[key];
+
+                return (
+                  <View key={key} style={styles.inputGroup}>
+                    <Text style={styles.label}>{label}</Text>
+
+                    <TouchableOpacity
+                      style={styles.selectButton}
+                      activeOpacity={0.8}
+                      onPress={() => setActiveSelect({ key, label, opts })}
                     >
-                      <Picker.Item label="Selecione..." value="" />
-                      {opts.map((o) => (
-                        <Picker.Item key={o} label={o} value={o} />
-                      ))}
-                    </Picker>
+                      <Text
+                        style={[
+                          styles.selectButtonText,
+                          !selectedValue && styles.selectButtonPlaceholder,
+                        ]}
+                      >
+                        {selectedValue || "Selecione..."}
+                      </Text>
+
+                      <Text style={styles.selectArrow}>⌄</Text>
+                    </TouchableOpacity>
                   </View>
-                </View>
-              ))}
+                );
+              })}
 
               <TouchableOpacity
                 style={[
@@ -145,6 +158,56 @@ export default function SimuladorScreen() {
               >
                 <Text style={styles.simulateBtnText}>🎯 Gerar Simulação</Text>
               </TouchableOpacity>
+              <Modal
+                visible={!!activeSelect}
+                transparent
+                animationType="fade"
+                onRequestClose={() => setActiveSelect(null)}
+              >
+                <Pressable
+                  style={styles.modalOverlay}
+                  onPress={() => setActiveSelect(null)}
+                >
+                  <Pressable style={styles.modalContent}>
+                    <Text style={styles.modalTitle}>{activeSelect?.label}</Text>
+
+                    {activeSelect?.opts.map((option) => {
+                      const isSelected = activeSelect
+                        ? (form as any)[activeSelect.key] === option
+                        : false;
+
+                      return (
+                        <TouchableOpacity
+                          key={option}
+                          style={[
+                            styles.selectOption,
+                            isSelected && styles.selectOptionActive,
+                          ]}
+                          onPress={() => {
+                            if (!activeSelect) return;
+
+                            setField(activeSelect.key, option);
+                            setActiveSelect(null);
+                          }}
+                        >
+                          <Text
+                            style={[
+                              styles.selectOptionText,
+                              isSelected && styles.selectOptionTextActive,
+                            ]}
+                          >
+                            {option}
+                          </Text>
+
+                          {isSelected && (
+                            <Text style={styles.checkIcon}>✓</Text>
+                          )}
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </Pressable>
+                </Pressable>
+              </Modal>
             </>
           ) : (
             <>
@@ -238,6 +301,93 @@ export default function SimuladorScreen() {
 }
 
 const styles = StyleSheet.create({
+  selectButton: {
+    minHeight: 54,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "rgba(0,163,224,0.2)",
+    backgroundColor: "rgba(255,255,255,0.04)",
+    paddingHorizontal: 14,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
+  selectButtonText: {
+    flex: 1,
+    color: "white",
+    fontSize: 13,
+    fontWeight: "600",
+    marginRight: 12,
+  },
+
+  selectButtonPlaceholder: {
+    color: "rgba(255,255,255,0.45)",
+  },
+
+  selectArrow: {
+    color: "#00a3e0",
+    fontSize: 22,
+    fontWeight: "bold",
+  },
+
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.65)",
+    justifyContent: "flex-end",
+  },
+
+  modalContent: {
+    backgroundColor: "#0d1929",
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: "rgba(0,163,224,0.25)",
+  },
+
+  modalTitle: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 16,
+    textAlign: "center",
+  },
+
+  selectOption: {
+    paddingVertical: 14,
+    paddingHorizontal: 14,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+    backgroundColor: "rgba(255,255,255,0.04)",
+    marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
+  selectOptionActive: {
+    backgroundColor: "rgba(0,163,224,0.16)",
+    borderColor: "#00a3e0",
+  },
+
+  selectOptionText: {
+    flex: 1,
+    color: "white",
+    fontSize: 14,
+    fontWeight: "600",
+  },
+
+  selectOptionTextActive: {
+    color: "#00a3e0",
+  },
+
+  checkIcon: {
+    color: "#00a3e0",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
   backButton: {
     width: 36,
     height: 36,
@@ -299,14 +449,6 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     marginBottom: 8,
   },
-  pickerContainer: {
-    backgroundColor: "rgba(255,255,255,0.04)",
-    borderWidth: 1,
-    borderColor: "rgba(0,163,224,0.2)",
-    borderRadius: 12,
-    overflow: "hidden",
-  },
-  picker: { color: "white", height: 50 },
   simulateBtn: {
     backgroundColor: "#00a3e0",
     paddingVertical: 16,

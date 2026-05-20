@@ -1,4 +1,3 @@
-// src/components/Card.tsx
 import { View, Text, StyleSheet, ViewStyle } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
@@ -10,30 +9,63 @@ interface CardProps {
   style?: ViewStyle;
 }
 
-export default function Card({ title, subtitle, children, variant = 'default', style }: CardProps) {
+export default function Card({
+  title,
+  subtitle,
+  children,
+  variant = 'default',
+  style,
+}: CardProps) {
   const isBlue = variant === 'blue';
   const isHighlight = variant === 'highlight';
 
-  const Container = isBlue ? LinearGradient : View;
-  const containerProps = isBlue 
-    ? { colors: ['#003078', '#001a50'] as const, style: [styles.card, styles.blueCard, style] }
-    : { style: [styles.card, isHighlight && styles.highlightCard, style] };
-
-  return (
-    <Container {...containerProps}>
+  const renderContent = () => (
+    <>
       {title && (
         <View style={styles.header}>
           {isHighlight && <Text style={styles.highlightIcon}>📌</Text>}
+
           <View>
-            <Text style={[styles.title, isBlue && styles.blueText]}>{title}</Text>
-            {subtitle && <Text style={[styles.subtitle, isBlue && styles.blueSubtitle]}>{subtitle}</Text>}
+            <Text style={[styles.title, isBlue && styles.blueText]}>
+              {title}
+            </Text>
+
+            {subtitle && (
+              <Text style={[styles.subtitle, isBlue && styles.blueSubtitle]}>
+                {subtitle}
+              </Text>
+            )}
           </View>
         </View>
       )}
+
       <View style={styles.content}>
-        {typeof children === 'string' ? <Text style={[styles.text, isBlue && styles.blueText]}>{children}</Text> : children}
+        {typeof children === 'string' ? (
+          <Text style={[styles.text, isBlue && styles.blueText]}>
+            {children}
+          </Text>
+        ) : (
+          children
+        )}
       </View>
-    </Container>
+    </>
+  );
+
+  if (isBlue) {
+    return (
+      <LinearGradient
+        colors={['#003078', '#001a50']}
+        style={[styles.card, styles.blueCard, style]}
+      >
+        {renderContent()}
+      </LinearGradient>
+    );
+  }
+
+  return (
+    <View style={[styles.card, isHighlight && styles.highlightCard, style]}>
+      {renderContent()}
+    </View>
   );
 }
 
@@ -61,7 +93,9 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     gap: 10,
   },
-  highlightIcon: { fontSize: 16 },
+  highlightIcon: {
+    fontSize: 16,
+  },
   title: {
     fontSize: 14,
     fontWeight: 'bold',
@@ -74,8 +108,12 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     marginTop: 2,
   },
-  blueText: { color: 'white' },
-  blueSubtitle: { color: '#00a3e0' },
+  blueText: {
+    color: 'white',
+  },
+  blueSubtitle: {
+    color: '#00a3e0',
+  },
   content: {
     padding: 16,
     paddingTop: 0,

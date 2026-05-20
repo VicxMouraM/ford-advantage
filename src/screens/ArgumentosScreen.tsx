@@ -1,4 +1,3 @@
-// src/screens/ArgumentosScreen.tsx
 import { useState } from "react";
 import {
   View,

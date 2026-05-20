@@ -1,4 +1,3 @@
-// src/components/FordExclusiveGate.tsx
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useApp } from '../context/AppContext';
 

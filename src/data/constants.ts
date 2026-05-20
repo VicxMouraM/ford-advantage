@@ -1,4 +1,3 @@
-// src/data/constants.ts
 export const RANGER_RAPTOR = {
   id: 'ranger-raptor',
   brand: 'Ford',

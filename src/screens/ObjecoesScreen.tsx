@@ -1,4 +1,3 @@
-// src/screens/ObjecoesScreen.tsx
 import { useState } from "react";
 import {
   View,

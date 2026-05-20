@@ -1,4 +1,3 @@
-// src/screens/ComparadorScreen.tsx
 import { useState } from "react";
 import {
   View,
@@ -7,6 +6,8 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   StyleSheet,
+  Modal,
+  Pressable,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import { useApp } from "../context/AppContext";
@@ -22,6 +23,7 @@ export default function ComparadorScreen() {
     user,
   } = useApp();
 
+  const [competitorModalVisible, setCompetitorModalVisible] = useState(false);
   const backScreen = user?.type === "ford" ? "home-ford" : "home-customer";
   const [competitor, setCompetitor] = useState("hilux");
   const [selectedAttrs, setSelectedAttrs] = useState([
@@ -106,22 +108,70 @@ export default function ComparadorScreen() {
 
         <View style={styles.section}>
           <Text style={styles.label}>Veículo Concorrente</Text>
-          <View style={styles.pickerContainer}>
-            <Picker
-              selectedValue={competitor}
-              onValueChange={setCompetitor}
-              style={styles.picker}
-              dropdownIconColor="#00a3e0"
+          <TouchableOpacity
+            style={styles.selectButton}
+            activeOpacity={0.8}
+            onPress={() => setCompetitorModalVisible(true)}
+          >
+            <Text style={styles.selectButtonText}>
+              {`${COMPETITORS[competitor as keyof typeof COMPETITORS].brand} ${
+                COMPETITORS[competitor as keyof typeof COMPETITORS].model
+              } ${COMPETITORS[competitor as keyof typeof COMPETITORS].version}`}
+            </Text>
+
+            <Text style={styles.selectArrow}>⌄</Text>
+          </TouchableOpacity>
+
+          <Modal
+            visible={competitorModalVisible}
+            transparent
+            animationType="fade"
+            onRequestClose={() => setCompetitorModalVisible(false)}
+          >
+            <Pressable
+              style={styles.modalOverlay}
+              onPress={() => setCompetitorModalVisible(false)}
             >
-              {Object.values(COMPETITORS).map((c) => (
-                <Picker.Item
-                  key={c.id}
-                  label={`${c.brand} ${c.model} ${c.version}`}
-                  value={c.id}
-                />
-              ))}
-            </Picker>
-          </View>
+              <Pressable style={styles.modalContent}>
+                <Text style={styles.modalTitle}>Escolha o concorrente</Text>
+
+                {Object.values(COMPETITORS).map((c) => {
+                  const isSelected = competitor === c.id;
+
+                  return (
+                    <TouchableOpacity
+                      key={c.id}
+                      style={[
+                        styles.competitorOption,
+                        isSelected && styles.competitorOptionActive,
+                      ]}
+                      onPress={() => {
+                        setCompetitor(c.id);
+                        setCompetitorModalVisible(false);
+                      }}
+                    >
+                      <View>
+                        <Text
+                          style={[
+                            styles.competitorOptionTitle,
+                            isSelected && styles.competitorOptionTitleActive,
+                          ]}
+                        >
+                          {c.brand} {c.model}
+                        </Text>
+
+                        <Text style={styles.competitorOptionSubtitle}>
+                          {c.version}
+                        </Text>
+                      </View>
+
+                      {isSelected && <Text style={styles.checkIcon}>✓</Text>}
+                    </TouchableOpacity>
+                  );
+                })}
+              </Pressable>
+            </Pressable>
+          </Modal>
         </View>
 
         <View style={styles.section}>
@@ -168,6 +218,94 @@ export default function ComparadorScreen() {
 }
 
 const styles = StyleSheet.create({
+  selectButton: {
+    minHeight: 54,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: "rgba(0,163,224,0.2)",
+    backgroundColor: "rgba(255,255,255,0.04)",
+    paddingHorizontal: 14,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
+  selectButtonText: {
+    flex: 1,
+    color: "white",
+    fontSize: 13,
+    fontWeight: "600",
+    marginRight: 12,
+  },
+
+  selectArrow: {
+    color: "#00a3e0",
+    fontSize: 22,
+    fontWeight: "bold",
+  },
+
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.65)",
+    justifyContent: "flex-end",
+  },
+
+  modalContent: {
+    backgroundColor: "#0d1929",
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: 20,
+    borderWidth: 1,
+    borderColor: "rgba(0,163,224,0.25)",
+  },
+
+  modalTitle: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 16,
+    textAlign: "center",
+  },
+
+  competitorOption: {
+    paddingVertical: 14,
+    paddingHorizontal: 14,
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: "rgba(255,255,255,0.08)",
+    backgroundColor: "rgba(255,255,255,0.04)",
+    marginBottom: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+
+  competitorOptionActive: {
+    backgroundColor: "rgba(0,163,224,0.16)",
+    borderColor: "#00a3e0",
+  },
+
+  competitorOptionTitle: {
+    color: "white",
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+
+  competitorOptionTitleActive: {
+    color: "#00a3e0",
+  },
+
+  competitorOptionSubtitle: {
+    color: "rgba(255,255,255,0.55)",
+    fontSize: 11,
+    marginTop: 2,
+  },
+
+  checkIcon: {
+    color: "#00a3e0",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
   backButton: {
     width: 36,
     height: 36,
