@@ -2,10 +2,10 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
-  StyleSheet,
+  TouchableOpacity
 } from "react-native";
 import { useApp } from "../context/AppContext";
+import { styles } from "../styles/HomeFordScreen.styles";
 
 export default function HomeFordScreen() {
   const { navigate } = useApp();
@@ -115,103 +115,3 @@ export default function HomeFordScreen() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#0d1929" },
-  header: {
-    backgroundColor: "#003078",
-    paddingHorizontal: 20,
-    paddingTop: 60,
-    paddingBottom: 30,
-  },
-  headerTop: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "flex-start",
-    marginBottom: 20,
-  },
-  headerLeft: {
-    flex: 1,
-  },
-  logoutButton: {
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 999,
-    backgroundColor: "rgba(255,255,255,0.08)",
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.18)",
-    marginLeft: 16,
-  },
-  logoutButtonText: {
-    color: "white",
-    fontSize: 12,
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    letterSpacing: 1,
-  },
-  greeting: {
-    fontSize: 11,
-    color: "#00a3e0",
-    letterSpacing: 3,
-    textTransform: "uppercase",
-  },
-  title: {
-    fontSize: 34,
-    fontWeight: "bold",
-    color: "white",
-    letterSpacing: 3,
-    marginTop: 6,
-  },
-  description: {
-    fontSize: 12,
-    color: "rgba(255,255,255,0.6)",
-    marginTop: 12,
-    lineHeight: 18,
-  },
-  content: { padding: 20 },
-  grid: { flexDirection: "row", flexWrap: "wrap", gap: 10, marginBottom: 20 },
-  gridItem: {
-    backgroundColor: "#0d1929",
-    borderWidth: 1,
-    borderColor: "rgba(0,163,224,0.2)",
-    borderRadius: 16,
-    padding: 16,
-    width: "48%",
-  },
-  gridItemFull: { width: "100%" },
-  gridIcon: { fontSize: 24, marginBottom: 8 },
-  gridTitle: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "white",
-    textTransform: "uppercase",
-  },
-  gridSub: { fontSize: 11, color: "rgba(255,255,255,0.4)", marginTop: 4 },
-  highlightCard: {
-    backgroundColor: "rgba(245,166,35,0.05)",
-    borderWidth: 1,
-    borderColor: "rgba(245,166,35,0.3)",
-    borderRadius: 16,
-    padding: 16,
-  },
-  highlightLabel: {
-    fontSize: 10,
-    color: "#f5a623",
-    textTransform: "uppercase",
-    letterSpacing: 2,
-    marginBottom: 8,
-  },
-  tags: { flexDirection: "row", flexWrap: "wrap", gap: 6 },
-  tag: {
-    backgroundColor: "rgba(0,163,224,0.15)",
-    paddingHorizontal: 10,
-    paddingVertical: 4,
-    borderRadius: 6,
-  },
-  tagText: {
-    fontSize: 10,
-    fontWeight: "bold",
-    color: "#00a3e0",
-    textTransform: "uppercase",
-  },
-});
