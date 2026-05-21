@@ -46,7 +46,7 @@ export default function RootNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="current" component={CurrentScreen} />
+        <Stack.Screen name="Ford Advantage" component={CurrentScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
