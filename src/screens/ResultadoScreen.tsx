@@ -12,10 +12,11 @@ import {
   ATTRIBUTES,
   FORD_ADVANTAGES,
 } from "../data/constants";
+import TopBar from "../components/TopBar";
 import { styles } from "../styles/ResultadoScreen.styles";
 
 export default function ResultadoScreen() {
-  const { comparisonResult, user, navigate, addHistory } = useApp();
+  const { comparisonResult, navigate, addHistory } = useApp();
 
   if (!comparisonResult) {
     return (
@@ -81,18 +82,7 @@ export default function ResultadoScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <TouchableOpacity
-          onPress={() => navigate("comparador")}
-          style={styles.backButton}
-        >
-          <Text style={styles.backText}>‹</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.headerTitle}>Resultado</Text>
-
-        <View style={styles.headerSpacer} />
-      </View>
+      <TopBar title="Resultado" back="comparador" />
 
       <View style={styles.content}>
         <LinearGradient

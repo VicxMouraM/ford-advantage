@@ -60,6 +60,7 @@ ford-advantage/
 │   ├── styles/           # StyleSheets separados por tela
 │   └── navigation/       # Configuração de rotas
 ├── app.json
+├── eas.json          # Perfis de build (EAS Build)
 ├── package.json
 └── README.md
 ```
@@ -118,6 +119,38 @@ Escaneie o QR Code com o **Expo Go** no seu celular e pronto! 🎉
 
 ---
 
+## 📲 Instalar o APK (Build EAS)
+
+O build final da aplicação é gerado através do **EAS Build (Expo Application Services)**, no formato **APK** para Android.
+
+### Gerando o build
+
+```bash
+# 1. Login na conta Expo (uma vez só)
+npx eas-cli login
+
+# 2. Gerar o APK (perfil "preview")
+npm run build:android:apk
+```
+
+O comando usa o perfil `preview` definido em [`eas.json`](eas.json) (`buildType: apk`, distribuição interna). Ao final, o EAS gera um link de download e um QR Code no [dashboard do EAS](https://expo.dev/).
+
+### Opção 1 — Via APK (Android)
+
+1. Baixe o arquivo `.apk` pelo link gerado no build
+2. Habilite a instalação de apps de fontes desconhecidas (**Configurações > Segurança**)
+3. Abra o arquivo baixado e conclua a instalação
+
+🔗 **Link do build:** [expo.dev/accounts/vicx_moura/projects/ford-advantage/builds/d0c71cb1-463b-423d-a86b-39f86741e06d](https://expo.dev/accounts/vicx_moura/projects/ford-advantage/builds/d0c71cb1-463b-423d-a86b-39f86741e06d)
+
+### Opção 2 — Via QR Code (Expo Go / Dashboard EAS)
+
+1. Acesse o [dashboard do EAS](https://expo.dev/) e localize o build do projeto
+2. Escaneie o QR Code exibido no dashboard com a câmera do celular
+3. Aguarde o download e a instalação do app
+
+---
+
 ## 🔐 Acesso ao App
 
 O app possui dois tipos de login (modo demo, sem autenticação real):
@@ -129,21 +162,32 @@ O app possui dois tipos de login (modo demo, sem autenticação real):
 
 ## 📸 Telas do App
 
-| Tela | Descrição |
-|---|---|
-| Splash | Animação de abertura com logo Ford |
-| Login | Seleção de perfil (Ford ou Cliente) |
-| Home Ford | Menu completo para vendedores |
-| Home Cliente | Atalhos para comparador e quiz |
-| Comparador | Seleção de concorrente e atributos para comparar |
-| Resultado | Exibição visual das vantagens Ford |
-| BattleCard | Resumo estratégico da Raptor |
-| Argumentos | Argumentos de venda por perfil |
-| Objeções | Como responder cada objeção do cliente |
-| Simulador | Simulação de cenário de venda |
-| Quiz | Questionário de perfil para clientes |
-| Busca Livre | Pesquisa de versões Ford na base de dados |
-| Histórico | Log das ações realizadas no app |
+<table>
+<tr>
+<td align="center"><img src="assets/screenshots/01-splash.png" width="180"/><br/><b>Splash</b><br/>Animação de abertura com logo Ford</td>
+<td align="center"><img src="assets/screenshots/02-login.png" width="180"/><br/><b>Login</b><br/>Seleção de perfil (Ford ou Cliente)</td>
+<td align="center"><img src="assets/screenshots/03-home-ford.png" width="180"/><br/><b>Home Ford</b><br/>Menu completo para vendedores</td>
+<td align="center"><img src="assets/screenshots/13-home-customer.png" width="180"/><br/><b>Home Cliente</b><br/>Atalhos para comparador e quiz</td>
+</tr>
+<tr>
+<td align="center"><img src="assets/screenshots/04-comparador.png" width="180"/><br/><b>Comparador</b><br/>Seleção de concorrente e atributos</td>
+<td align="center"><img src="assets/screenshots/05-resultado.png" width="180"/><br/><b>Resultado</b><br/>Vantagens Ford exibidas visualmente</td>
+<td align="center"><img src="assets/screenshots/06-battlecard.png" width="180"/><br/><b>BattleCard</b><br/>Resumo estratégico da Raptor</td>
+<td align="center"><img src="assets/screenshots/07-argumentos.png" width="180"/><br/><b>Argumentos</b><br/>Argumentos de venda por perfil</td>
+</tr>
+<tr>
+<td align="center"><img src="assets/screenshots/08-objecoes.png" width="180"/><br/><b>Objeções</b><br/>Resposta para cada objeção do cliente</td>
+<td align="center"><img src="assets/screenshots/09-simulador.png" width="180"/><br/><b>Simulador</b><br/>Simulação de cenário de venda</td>
+<td align="center"><img src="assets/screenshots/14-quiz.png" width="180"/><br/><b>Quiz</b><br/>Questionário de perfil para clientes</td>
+<td align="center"><img src="assets/screenshots/15-quiz-resultado.png" width="180"/><br/><b>Resultado do Quiz</b><br/>Perfil identificado e compatibilidade</td>
+</tr>
+<tr>
+<td align="center"><img src="assets/screenshots/11-free-search.png" width="180"/><br/><b>Busca Livre</b><br/>Pesquisa de versões Ford na base</td>
+<td align="center"><img src="assets/screenshots/12-search-result.png" width="180"/><br/><b>Especificações</b><br/>Lista padronizada de specs</td>
+<td align="center"><img src="assets/screenshots/10-historico.png" width="180"/><br/><b>Histórico</b><br/>Log das ações realizadas no app</td>
+<td></td>
+</tr>
+</table>
 
 ---
 

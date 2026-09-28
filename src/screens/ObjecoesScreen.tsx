@@ -7,32 +7,18 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import FordExclusiveGate from "../components/FordExclusiveGate";
+import TopBar from "../components/TopBar";
 import { OBJECTIONS } from "../data/constants";
-import { useApp } from "../context/AppContext";
 import { styles } from "../styles/ObjecoesScreen.styles";
 
 export default function ObjecoesScreen() {
-  const { navigate } = useApp();
   const [selected, setSelected] = useState<string | null>(null);
   const obj = selected ? OBJECTIONS.find((o) => o.id === selected) : null;
 
   return (
     <FordExclusiveGate>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => navigate("home-ford")}
-          >
-            <Text style={styles.backButtonText}>←</Text>
-          </TouchableOpacity>
-
-          <Text style={styles.headerTitle}>Objeções do Cliente</Text>
-
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>FORD</Text>
-          </View>
-        </View>
+        <TopBar title="Objeções do Cliente" back="home-ford" badge="FORD" />
 
         <View style={styles.content}>
           <Text style={styles.sectionTitle}>Selecione a Objeção</Text>

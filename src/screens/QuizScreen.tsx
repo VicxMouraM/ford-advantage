@@ -7,6 +7,7 @@ import {
 } from "react-native";
 import { useApp } from "../context/AppContext";
 import { QUIZ_QUESTIONS, PROFILES } from "../data/constants";
+import TopBar from "../components/TopBar";
 import { styles } from "../styles/QuizScreen.styles";
 
 export default function QuizScreen() {
@@ -47,19 +48,7 @@ export default function QuizScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <TouchableOpacity
-          onPress={() => navigate("home-customer")}
-          style={styles.backButton}
-        >
-          <Text style={styles.backText}>‹</Text>
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Quiz de Perfil</Text>
-
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>CLIENTE</Text>
-        </View>
-      </View>
+      <TopBar title="Quiz de Perfil" back="home-customer" badge="CLIENTE" />
 
       <View style={styles.content}>
         <View style={styles.progressBar}>

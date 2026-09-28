@@ -45,7 +45,7 @@ export default function LoginScreen() {
           <Text style={styles.buttonText}>👤 Entrar como Cliente</Text>
         </TouchableOpacity>
 
-        <Text style={styles.demoText}>Versão demo — sem autenticação real</Text>
+        <Text style={styles.demoText}>Versão desenvolvida a fim de teste — sem autenticação real</Text>
       </View>
     </LinearGradient>
   );

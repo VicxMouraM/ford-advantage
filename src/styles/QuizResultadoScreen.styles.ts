@@ -2,27 +2,6 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#0d1929' },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 60,
-    paddingBottom: 16,
-    backgroundColor: 'rgba(0,48,120,0.95)',
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(0,163,224,0.2)',
-  },
-  backButton: {
-    width: 32,
-    height: 32,
-    borderRadius: 16,
-    backgroundColor: 'rgba(255,255,255,0.08)',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 12,
-  },
-  backText: { fontSize: 20, color: 'white' },
-  headerTitle: { fontSize: 18, fontWeight: 'bold', color: 'white', letterSpacing: 1, flex: 1 },
   content: { padding: 20 },
   hero: { borderRadius: 20, padding: 28, alignItems: 'center', marginBottom: 16, borderWidth: 1, borderColor: 'rgba(0,163,224,0.3)' },
   heroEmoji: { fontSize: 56, marginBottom: 12 },

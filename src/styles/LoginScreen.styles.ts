@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
   },
   customerButton: {
     backgroundColor: '#00a3e0',
-    shadowColor: '#1e90ff',
+    shadowColor: '#00a3e0',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
     shadowRadius: 8,

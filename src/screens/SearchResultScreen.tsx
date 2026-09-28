@@ -59,7 +59,7 @@ export default function SearchResultScreen() {
           style={styles.backButton}
           onPress={() => navigate("free-search")}
         >
-          <Text style={styles.backButtonText}>←</Text>
+          <Text style={styles.backButtonText}>‹</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Especificações</Text>
         <TouchableOpacity style={styles.shareButton} onPress={handleShare}>

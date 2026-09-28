@@ -15,6 +15,7 @@ import {
   getStandardizedSpecs,
   STANDARD_SPECS,
 } from "../services/vehicleService";
+import TopBar from "../components/TopBar";
 import { styles } from "../styles/FreeSearchScreen.styles";
 
 export default function FreeSearchScreen() {
@@ -116,20 +117,11 @@ export default function FreeSearchScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigate(backScreen)}
-        >
-          <Text style={styles.backButtonText}>←</Text>
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Buscar Veículo</Text>
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>
-            {user?.type === "ford" ? "FORD" : "CLIENTE"}
-          </Text>
-        </View>
-      </View>
+      <TopBar
+        title="Buscar Veículo"
+        back={backScreen}
+        badge={user?.type === "ford" ? "FORD" : "CLIENTE"}
+      />
 
       <View style={styles.content}>
         <LinearGradient colors={["#003078", "#001a50"]} style={styles.infoCard}>

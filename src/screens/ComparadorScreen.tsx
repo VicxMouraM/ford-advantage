@@ -12,6 +12,7 @@ import { Picker } from "@react-native-picker/picker";
 import { useApp } from "../context/AppContext";
 import { COMPETITORS, ATTRIBUTES } from "../data/constants";
 import { LinearGradient } from "expo-linear-gradient";
+import TopBar from "../components/TopBar";
 import { styles } from "../styles/ComparadorScreen.styles";
 
 export default function ComparadorScreen() {
@@ -72,22 +73,11 @@ export default function ComparadorScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigate(backScreen)}
-        >
-          <Text style={styles.backButtonText}>←</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.headerTitle}>Comparador Inteligente</Text>
-
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>
-            {user?.type === "ford" ? "FORD" : "CLIENTE"}
-          </Text>
-        </View>
-      </View>
+      <TopBar
+        title="Comparador Inteligente"
+        back={backScreen}
+        badge={user?.type === "ford" ? "FORD" : "CLIENTE"}
+      />
 
       <View style={styles.content}>
         <LinearGradient

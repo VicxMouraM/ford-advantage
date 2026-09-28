@@ -1,52 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-  backButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: "rgba(255,255,255,0.08)",
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.15)",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  backButtonText: {
-    color: "white",
-    fontSize: 22,
-    fontWeight: "bold",
-  },
   container: { flex: 1, backgroundColor: "#0d1929" },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 20,
-    paddingTop: 60,
-    paddingBottom: 16,
-    backgroundColor: "rgba(0,48,120,0.95)",
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(0,163,224,0.2)",
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "white",
-    letterSpacing: 1,
-  },
-  badge: {
-    backgroundColor: "#00a3e0",
-    paddingHorizontal: 8,
-    paddingVertical: 3,
-    borderRadius: 12,
-  },
-  badgeText: {
-    fontSize: 10,
-    fontWeight: "bold",
-    color: "white",
-    textTransform: "uppercase",
-  },
   content: { padding: 20 },
   heroCard: {
     borderRadius: 16,

@@ -1,10 +1,11 @@
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useApp } from '../context/AppContext';
+import TopBar from '../components/TopBar';
 import { styles } from '../styles/QuizResultadoScreen.styles';
 
 export default function QuizResultadoScreen() {
-  const { quizResult, navigate } = useApp();
+  const { quizResult } = useApp();
 
   if (!quizResult) return null;
 
@@ -12,12 +13,7 @@ export default function QuizResultadoScreen() {
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigate('quiz')} style={styles.backButton}>
-          <Text style={styles.backText}>‹</Text>
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Resultado do Quiz</Text>
-      </View>
+      <TopBar title="Resultado do Quiz" back="quiz" />
 
       <View style={styles.content}>
         <LinearGradient colors={['#001a4d', '#003078']} style={styles.hero}>

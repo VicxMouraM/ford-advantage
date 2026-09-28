@@ -2,33 +2,22 @@ import {
   View,
   Text,
   ScrollView,
-  TouchableOpacity,
 } from "react-native";
 import { useApp } from "../context/AppContext";
+import TopBar from "../components/TopBar";
 import { styles } from "../styles/HistoricoScreen.styles";
 
 export default function HistoricoScreen() {
-  const { history, navigate, user } = useApp();
+  const { history, user } = useApp();
 
   const backScreen = user?.type === "ford" ? "home-ford" : "home-customer";
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => navigate(backScreen)}
-        >
-          <Text style={styles.backButtonText}>←</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.headerTitle}>Histórico</Text>
-
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>
-            {user?.type === "ford" ? "FORD" : "CLIENTE"}
-          </Text>
-        </View>
-      </View>
+      <TopBar
+        title="Histórico"
+        back={backScreen}
+        badge={user?.type === "ford" ? "FORD" : "CLIENTE"}
+      />
 
       <View style={styles.content}>
         {history.length === 0 ? (

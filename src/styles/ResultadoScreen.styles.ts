@@ -2,52 +2,6 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#0d1929" },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 20,
-    paddingTop: 60,
-    paddingBottom: 16,
-    backgroundColor: "rgba(0,48,120,0.95)",
-    borderBottomWidth: 1,
-    borderBottomColor: "rgba(0,163,224,0.2)",
-  },
-
-  backButton: {
-    width: 36,
-    height: 36,
-    borderRadius: 18,
-    backgroundColor: "rgba(255,255,255,0.08)",
-    borderWidth: 1,
-    borderColor: "rgba(255,255,255,0.15)",
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 2,
-  },
-
-  backText: {
-    fontSize: 24,
-    color: "white",
-    fontWeight: "bold",
-  },
-
-  headerTitle: {
-    position: "absolute",
-    left: 0,
-    right: 0,
-    top: 62,
-    textAlign: "center",
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "white",
-    letterSpacing: 1,
-  },
-
-  headerSpacer: {
-    width: 36,
-    height: 36,
-  },
   content: { padding: 20 },
   summaryCard: {
     borderRadius: 16,

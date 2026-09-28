@@ -10,12 +10,12 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import FordExclusiveGate from "../components/FordExclusiveGate";
+import TopBar from "../components/TopBar";
 import { SALE_SCENARIOS } from "../data/constants";
 import { useApp } from "../context/AppContext";
 import { styles } from "../styles/SimuladorScreen.styles";
 
 export default function SimuladorScreen() {
-  const { navigate } = useApp();
   const { addHistory } = useApp();
   const [form, setForm] = useState({
     competitor: "",
@@ -80,20 +80,7 @@ export default function SimuladorScreen() {
   return (
     <FordExclusiveGate>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        <View style={styles.header}>
-          <TouchableOpacity
-            style={styles.backButton}
-            onPress={() => navigate("home-ford")}
-          >
-            <Text style={styles.backButtonText}>←</Text>
-          </TouchableOpacity>
-
-          <Text style={styles.headerTitle}>Simulador de Venda</Text>
-
-          <View style={styles.badge}>
-            <Text style={styles.badgeText}>FORD</Text>
-          </View>
-        </View>
+        <TopBar title="Simulador de Venda" back="home-ford" badge="FORD" />
 
         <View style={styles.content}>
           {!result ? (
