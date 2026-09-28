@@ -141,7 +141,7 @@ O comando usa o perfil `preview` definido em [`eas.json`](eas.json) (`buildType:
 2. Habilite a instalação de apps de fontes desconhecidas (**Configurações > Segurança**)
 3. Abra o arquivo baixado e conclua a instalação
 
-🔗 **Link do build:** [expo.dev/accounts/vicx_moura/projects/ford-advantage/builds/d0c71cb1-463b-423d-a86b-39f86741e06d](https://expo.dev/accounts/vicx_moura/projects/ford-advantage/builds/d0c71cb1-463b-423d-a86b-39f86741e06d)
+🔗 **Download do APK:** [ford-advantage.apk (v1.0.0)](https://github.com/VicxMouraM/ford-advantage/releases/download/v1.0.0/ford-advantage.apk) · [Página do release](https://github.com/VicxMouraM/ford-advantage/releases/latest)
 
 ### Opção 2 — Via QR Code (Expo Go / Dashboard EAS)
 
