@@ -149,6 +149,8 @@ O comando usa o perfil `preview` definido em [`eas.json`](eas.json) (`buildType:
 2. Escaneie o QR Code exibido no dashboard com a câmera do celular
 3. Aguarde o download e a instalação do app
 
+<img width="265" height="267" alt="image" src="https://github.com/user-attachments/assets/65b13d41-b6c5-4c18-8250-84fad2c2f91d" />
+
 ---
 
 ## 🔐 Acesso ao App
